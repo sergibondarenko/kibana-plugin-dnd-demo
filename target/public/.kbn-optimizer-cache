@@ -1,0 +1,56 @@
+{
+  "optimizerCacheKey": {
+    "workerConfig": {
+      "cache": true,
+      "dist": false,
+      "profileWebpack": false,
+      "repoRoot": "/Users/sergiibondarenko/Development/kibana/kibana_7.7",
+      "watch": true,
+      "optimizerCacheKey": "♻",
+      "browserslistEnv": "dev"
+    },
+    "lastCommit": "7df868b3004af68ddb4e6fe38440c329d526e9e4",
+    "bootstrap": "# this is only human readable for debugging, please don't try to parse this\n@kbn/babel-preset:d46ee7ad4e2540040c6d6838278506583aefc394\n@kbn/dev-utils:c8e3e0defdadd837668f75c8aa848d8cbda65688\n@kbn/expect:d8f5076701581dd9ba3805eb0f1f37adc576c179\n@kbn/i18n:e3aa574bd46a10f13976f52c9a319db5b65548ef\n@kbn/optimizer:51dd6a6d7863b4052c0bf045c072fde8ae358720\n@kbn/ui-shared-deps:9ea961893798efaf8724f5d4db2d06b9303a27d5",
+    "deletedPaths": [],
+    "modifiedTimes": {}
+  },
+  "cacheKey": {
+    "spec": {
+      "type": "plugin",
+      "id": "dndplugin",
+      "entry": "./public/index",
+      "contextDir": "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin",
+      "sourceRoot": "/Users/sergiibondarenko/Development/kibana/kibana_7.7",
+      "outputDir": "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/target/public"
+    },
+    "mtimes": {
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/node_modules/css-loader/package.json": 1589268395787,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/node_modules/style-loader/package.json": 1589268395832,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/common/index.ts": 1591253072935.9016,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/node_modules/uuid/package.json": 1589268386521,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/application.tsx": 1591253072936.168,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/actions_panel.js": 1591254591203.916,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/app.tsx": 1591256271872.6697,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/drag_and_drop.js": 1591255655545.4194,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/index.scss": 1591253056813.533,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/index.ts": 1591253072936.6682,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/plugin.ts": 1591253072936.9028,
+      "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/types.ts": 1591253072937.0818
+    }
+  },
+  "moduleCount": 18,
+  "files": [
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/node_modules/css-loader/package.json",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/node_modules/style-loader/package.json",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/common/index.ts",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/node_modules/uuid/package.json",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/application.tsx",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/actions_panel.js",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/app.tsx",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/components/drag_and_drop.js",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/index.scss",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/index.ts",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/plugin.ts",
+    "/Users/sergiibondarenko/Development/kibana/kibana_7.7/plugins/dndplugin/public/types.ts"
+  ]
+}

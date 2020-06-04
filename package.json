@@ -1,0 +1,11 @@
+{
+  "name": "dndplugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sergii Bondarenko <sergibondarenko@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/eui": "^24.1.0",
+    "uuid": "3.3.2"
+  }
+}
