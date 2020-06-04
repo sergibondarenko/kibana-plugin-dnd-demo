@@ -71,69 +71,71 @@ export const DndpluginApp = ({ basename, notifications, http, navigation }: Dndp
   // Render the application DOM.
   // Note that `navigation.ui.TopNavMenu` is a stateful component exported on the `navigation` plugin's start contract.
   return (
-    <Router basename={basename}>
-      <I18nProvider>
-        <>
-          <navigation.ui.TopNavMenu appName={PLUGIN_ID} showSearchBar={true} />
-          <EuiPage restrictWidth="1000px">
-            <EuiPageBody>
-              <EuiPageHeader>
-                <EuiTitle size="l">
-                  <h1>
-                    <FormattedMessage
-                      id="dndplugin.helloWorldText"
-                      defaultMessage="{name}"
-                      values={{ name: PLUGIN_NAME }}
-                    />
-                  </h1>
-                </EuiTitle>
-              </EuiPageHeader>
-              <EuiPageContent>
-                <EuiPageContentHeader>
-                  <EuiTitle>
-                    <h2>
+    <>
+      <Router basename={basename}>
+        <I18nProvider>
+          <>
+            <navigation.ui.TopNavMenu appName={PLUGIN_ID} showSearchBar={true} />
+            <EuiPage restrictWidth="1000px">
+              <EuiPageBody>
+                <EuiPageHeader>
+                  <EuiTitle size="l">
+                    <h1>
                       <FormattedMessage
-                        id="dndplugin.congratulationsTitle"
-                        defaultMessage="Congratulations, you have successfully created a new Kibana Plugin!"
+                        id="dndplugin.helloWorldText"
+                        defaultMessage="{name}"
+                        values={{ name: PLUGIN_NAME }}
                       />
-                    </h2>
+                    </h1>
                   </EuiTitle>
-                </EuiPageContentHeader>
-                <EuiPageContentBody>
-                  <EuiText>
-                    <p>
-                      <FormattedMessage
-                        id="dndplugin.content"
-                        defaultMessage="Look through the generated code and check out the plugin development documentation."
-                      />
-                    </p>
-                    <EuiHorizontalRule />
-                    <p>
-                      <FormattedMessage
-                        id="dndplugin.timestampText"
-                        defaultMessage="Last timestamp: {time}"
-                        values={{ time: timestamp ? timestamp : 'Unknown' }}
-                      />
-                    </p>
-                    <EuiButton type="primary" size="s" onClick={onClickHandler}>
-                      <FormattedMessage id="dndplugin.buttonText" defaultMessage="Get data" />
-                    </EuiButton>
-                  </EuiText>
+                </EuiPageHeader>
+                <EuiPageContent>
+                  <EuiPageContentHeader>
+                    <EuiTitle>
+                      <h2>
+                        <FormattedMessage
+                          id="dndplugin.congratulationsTitle"
+                          defaultMessage="Congratulations, you have successfully created a new Kibana Plugin!"
+                        />
+                      </h2>
+                    </EuiTitle>
+                  </EuiPageContentHeader>
+                  <EuiPageContentBody>
+                    <EuiText>
+                      <p>
+                        <FormattedMessage
+                          id="dndplugin.content"
+                          defaultMessage="Look through the generated code and check out the plugin development documentation."
+                        />
+                      </p>
+                      <EuiHorizontalRule />
+                      <p>
+                        <FormattedMessage
+                          id="dndplugin.timestampText"
+                          defaultMessage="Last timestamp: {time}"
+                          values={{ time: timestamp ? timestamp : 'Unknown' }}
+                        />
+                      </p>
+                      <EuiButton type="primary" size="s" onClick={onClickHandler}>
+                        <FormattedMessage id="dndplugin.buttonText" defaultMessage="Get data" />
+                      </EuiButton>
+                    </EuiText>
 
-                  <EuiSpacer />
-                  <DragAndDrop />
+                    <EuiSpacer />
+                    <DragAndDrop />
 
-                  <EuiSpacer />
-                  <DragAndDrop />
+                    <EuiSpacer />
+                    <DragAndDrop />
 
-                  <EuiSpacer />
-                  <ActionsPanel />
-                </EuiPageContentBody>
-              </EuiPageContent>
-            </EuiPageBody>
-          </EuiPage>
-        </>
-      </I18nProvider>
-    </Router>
+                    <EuiSpacer />
+                    <ActionsPanel />
+                  </EuiPageContentBody>
+                </EuiPageContent>
+              </EuiPageBody>
+            </EuiPage>
+          </>
+        </I18nProvider>
+      </Router>
+    </>
   );
 };
