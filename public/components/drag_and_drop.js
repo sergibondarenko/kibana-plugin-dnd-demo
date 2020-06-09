@@ -1,12 +1,11 @@
 /* eslint-disable @kbn/eslint/require-license-header */
 
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from 'uuid/v4';
 import { EuiAccordion, EuiButton, EuiPanel, EuiFlexGroup, EuiFlexItem, EuiIcon } from '@elastic/eui';
 
-// const _dragEl = document.getElementById('searchguarDraggable');
 const _dragEl = document.getElementById('globalBannerList');
 
 // fake data generator
@@ -34,26 +33,14 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
+const grid = 2;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
   userSelect: 'none',
-  // padding: grid * 2,
-  // margin: `0 0 ${grid}px 0`,
-
-  // change background colour if dragging
-  // background: '#ffffff',
-
-  // styles we need to apply on draggables
+  padding: grid * 2,
+  margin: `0 0 ${grid}px 0`,
   ...draggableStyle
 });
-
-function getPanelStyle(isDragging) {
-  return {
-    marginBottom: isDragging ? '0px' : '10px',
-  };
-}
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? '#bfdcd9' : '#ffffff',
@@ -61,92 +48,73 @@ const getListStyle = isDraggingOver => ({
   width: '100%',
 });
 
-class DragAndDrop extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: getItems(10)
-    };
-    this.onDragEnd = this.onDragEnd.bind(this);
-  }
+export function DragAndDrop() {
+  const [items, setItems] = useState(getItems(10));
 
-  onDragEnd(result) {
+  function onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
-
-    const items = reorder(
-      this.state.items,
+ 
+    setItems(reorder(
+      items,
       result.source.index,
       result.destination.index
-    );
-
-    this.setState({
-      items
-    });
+    ));
   }
 
-  openPortal(style, element) {
+  function openPortal(style, element) {
     if (style.position === 'fixed') {
-      return ReactDOM.createPortal(
-        element,
-        _dragEl,
-      );
+      return ReactDOM.createPortal(element, _dragEl);
     }
     return element;
   }
 
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
-  render() {
-    return (
-      <div style={{ overflowX: 'hidden' }}>
-        <EuiPanel paddingSize="none">
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            <Droppable droppableId="droppable">
-              {(provided, snapshot) => (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  style={getListStyle(snapshot.isDraggingOver)}
-                >
-                  {this.state.items.map((item, index) => (
-                    <Draggable key={item.id} draggableId={item.id} index={index}>
-                      {(provided, snapshot) => {
-                        return (
-                          this.openPortal(provided.draggableProps.style, (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
-                            >
-                              <EuiPanel style={getPanelStyle(snapshot.isDragging)}>
-                                <EuiFlexGroup>
-                                  <EuiFlexItem grow={false}>
-                                    <div {...provided.dragHandleProps}>
-                                      <EuiIcon type="grab" />
-                                    </div>
-                                  </EuiFlexItem>
-                                  <EuiFlexItem>{item.content}</EuiFlexItem>
-                                </EuiFlexGroup>
-                              </EuiPanel>
-                            </div>
-                          ))
-                        );
-                      }}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </EuiPanel>
-      </div>
-    );
-  }
+  return (
+    <div style={{ overflowX: 'hidden' }}>
+      <EuiPanel paddingSize="none">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                style={getListStyle(snapshot.isDraggingOver)}
+              >
+                {items.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(provided, snapshot) => {
+                      return (
+                        openPortal(provided.draggableProps.style, (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
+                          >
+                            <EuiPanel>
+                              <EuiFlexGroup>
+                                <EuiFlexItem grow={false}>
+                                  <div {...provided.dragHandleProps}>
+                                    <EuiIcon type="grab" />
+                                  </div>
+                                </EuiFlexItem>
+                                <EuiFlexItem>{item.content}</EuiFlexItem>
+                              </EuiFlexGroup>
+                            </EuiPanel>
+                          </div>
+                        ))
+                      );
+                    }}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </EuiPanel>
+    </div>
+  );
 }
-
-export { DragAndDrop };
