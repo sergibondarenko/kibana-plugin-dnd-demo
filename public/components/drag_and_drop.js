@@ -48,6 +48,21 @@ const getListStyle = isDraggingOver => ({
   width: '100%',
 });
 
+export function DraggableItem({ provided, item }) {
+  return (
+    <EuiPanel>
+      <EuiFlexGroup>
+        <EuiFlexItem grow={false}>
+          <div {...provided.dragHandleProps}>
+            <EuiIcon type="grab" />
+          </div>
+        </EuiFlexItem>
+        <EuiFlexItem>{item.content}</EuiFlexItem>
+      </EuiFlexGroup>
+    </EuiPanel>
+  );
+}
+
 export function DragAndDrop() {
   const [items, setItems] = useState(getItems(10));
 
@@ -93,16 +108,7 @@ export function DragAndDrop() {
                             {...provided.dragHandleProps}
                             style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                           >
-                            <EuiPanel>
-                              <EuiFlexGroup>
-                                <EuiFlexItem grow={false}>
-                                  <div {...provided.dragHandleProps}>
-                                    <EuiIcon type="grab" />
-                                  </div>
-                                </EuiFlexItem>
-                                <EuiFlexItem>{item.content}</EuiFlexItem>
-                              </EuiFlexGroup>
-                            </EuiPanel>
+                            <DraggableItem provided={provided} item={item} />
                           </div>
                         ))
                       );
